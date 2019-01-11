@@ -1,8 +1,33 @@
 <head> 
  <title>Convert Temperature</title> 
+    <style>
+        body{
+            background: lightblue;
+        }
+        
+        h2{
+            text-align: center;
+            margin-top:40px;
+        }
+        main{
+            width:350px;
+            margin:40px auto;
+        }
+        
+        input{
+            margin-bottom: 8px;
+        }
+        
+        table{
+            background: white;
+            width:350px;
+            margin: 40px auto;
+        }
+    </style>
  </head> 
  <body> 
  <h2>Temperature Conversion</h2> 
+    <main> 
  <form action = "<?php echo $_SERVER['PHP_SELF']; ?>" method = "GET"> 
  Degrees:
  <input type = "text" name = "degree" size=10> <br />
@@ -13,7 +38,8 @@
      
  <input type = "submit" name = "Convert Temperature"/> 
  </form> 
-
+</main>
+        
 <?php 
  //check for input
 if (array_key_exists('degree', $_GET)) {
@@ -23,7 +49,7 @@ if (array_key_exists('degree', $_GET)) {
 
     if (($firstLength > 0) && (is_numeric($_GET['degree']))) {
         if ($scale == "celcius") {
-            print "<table border><tr><th> Conversion Results</th></tr><tr><td>$degree</td><td>Celsius</td></tr>";
+            print "<table border><tr><th colspan=2> Conversion Results</th></tr><tr><td>$degree</td><td>Celsius</td></tr>";
             $c_2_f = round($degree*9/5+32, 2);
             print "<tr><td>$c_2_f</td><td>Fahrenheit</td></tr>";
             $c_2_k = round($degree+273.15, 2);
@@ -51,7 +77,7 @@ if (array_key_exists('degree', $_GET)) {
         }
     } else {
         //print an error message if input is NULL or NaN
-        echo "<span style = \"color:red\">*Please Enter A Valid Temperature.</span>";
+        echo "<span style= \"color:red\">*Please Enter A Valid Temperature.</span>";
     }
 }
 
